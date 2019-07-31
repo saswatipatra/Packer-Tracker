@@ -9,7 +9,6 @@ namespace PackerTracker.Models
         public bool Purchased {get; set;}
         public bool Packed {get; set;}
         public int Id{get; }
-        // public static int unpackedCount = 0;
         private static List<Packer> _instances = new List<Packer> {};
 
         public Packer (string itemName, int itemPrice, bool purchased, bool packed)

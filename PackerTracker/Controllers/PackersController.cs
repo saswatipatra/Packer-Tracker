@@ -46,5 +46,23 @@ namespace PackerTracker.Controllers
             List<Packer> allPackers = Packer.GetAll();
             return View(allPackers);
         }
+
+        [HttpGet("/packers/{id}/edit")]
+        public ActionResult Edit(int id)
+        {
+            Packer foundPacker = Packer.Search(id);
+            return View(foundPacker);
+        }
+
+        [HttpPost("/packers/{id}")]
+        public ActionResult Update(int id, string itemName, int itemPrice, bool purchased, bool packed)
+        {
+            Packer foundPacker = Packer.Search(id);
+            foundPacker.ItemName = itemName;
+            foundPacker.ItemPrice = itemPrice;
+            foundPacker.Purchased = purchased;
+            foundPacker.Packed = packed;
+            return RedirectToAction("Unpacked");
+        }
     }
 }
