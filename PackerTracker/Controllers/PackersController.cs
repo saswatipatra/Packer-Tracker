@@ -1,0 +1,42 @@
+using Microsoft.AspNetCore.Mvc;
+using PackerTracker.Models;
+using System.Collections.Generic;
+
+namespace PackerTracker.Controllers
+{
+    public class PackersController : Controller
+    {
+        [HttpGet("/packers")]
+        public ActionResult Index()
+        {
+            List<Packer> allPackers = Packer.GetAll();
+            return View(allPackers);
+        }
+
+        [HttpGet("/packers/new")]
+        public ActionResult New()
+        {
+            return View();
+        }
+
+        [HttpPost("/packers")]
+        public ActionResult Create(string itemName, int itemPrice, bool purchased, bool packed)
+        {
+            Packer myPacker = new Packer(itemName, itemPrice, purchased, packed);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost("/packers/delete")]
+        public ActionResult DeleteAll()
+        {
+            Packer.ClearAll();
+             return RedirectToAction("Index");
+        }
+        [HttpGet("/packers/{id}")]
+        public ActionResult Show(int id)
+        {
+            Packer foundPacker = Packer.Search(id);
+            return View(foundPacker);
+        }
+    }
+}

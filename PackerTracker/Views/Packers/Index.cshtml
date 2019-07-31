@@ -1,0 +1,17 @@
+@using PackerTracker.Models;
+<h1>Welcome to PackerTracker... Lets pack your stuffs for beach trip </h1>
+@if (Model.Count==0)
+{
+    <p>There is no list, why dont you plan for some trip and add list... </p>
+}
+<ul>
+    @foreach ( Packer packer in Model)
+    {
+       <li><a href='/packers/@packer.Id'>@packer.ItemName</a></li> 
+    }
+</ul>
+
+<a href="/packers/new">Add a new item.</a>
+<form action= "/packers/delete" method= "post"> 
+<button type="submit" name="button"> Clear All packers </button>
+</form>
