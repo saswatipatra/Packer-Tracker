@@ -32,11 +32,19 @@ namespace PackerTracker.Controllers
             Packer.ClearAll();
              return RedirectToAction("Index");
         }
+        
         [HttpGet("/packers/{id}")]
         public ActionResult Show(int id)
         {
             Packer foundPacker = Packer.Search(id);
             return View(foundPacker);
+        }
+
+        [HttpGet("/packers/unpacked")]
+        public ActionResult Unpacked()
+        {
+            List<Packer> allPackers = Packer.GetAll();
+            return View(allPackers);
         }
     }
 }

@@ -9,6 +9,7 @@ namespace PackerTracker.Models
         public bool Purchased {get; set;}
         public bool Packed {get; set;}
         public int Id{get; }
+        // public static int unpackedCount = 0;
         private static List<Packer> _instances = new List<Packer> {};
 
         public Packer (string itemName, int itemPrice, bool purchased, bool packed)
@@ -34,6 +35,30 @@ namespace PackerTracker.Models
         public static Packer Search( int searchId)
         {
             return _instances[searchId-1];
+        }
+
+        public static bool AllPacked()
+        {
+            int unpackedCount = 0;
+            bool result;
+            foreach (Packer item in _instances)
+            {
+                if (!item.Packed)
+                {
+                    unpackedCount++;
+                }
+            }
+
+            if (unpackedCount > 0)
+            {
+                result = false;
+            }
+            else
+            {
+                result = true;
+            }
+
+            return result;
         }
     }
 }

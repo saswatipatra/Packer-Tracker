@@ -1,0 +1,27 @@
+@using PackerTracker.Models;
+<h1>Welcome to PackerTracker... Lets pack your stuffs for beach trip </h1>
+
+<p>Here are all the things you still need to pack:</p>
+
+@if (Packer.AllPacked())
+{
+    <p>You have nothing left to pack!</p>
+}
+else
+{
+    <ul>
+        @foreach (Packer packer in Model)
+        {
+            @if (!packer.Packed)
+            {
+                <li><a href='/packers/@packer.Id'>@packer.ItemName</a></li>
+            }
+        }
+    </ul>
+}
+
+<a href="/packers/new">Add a new item.</a>
+<form action= "/packers/delete" method= "post"> 
+    <button type="submit" name="button"> Clear All packers </button>
+</form>
+<a href="/"><button>Back</button></a>

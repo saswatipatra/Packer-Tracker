@@ -1,9 +1,9 @@
 @using PackerTracker.Models;
 
 <h1> Packer Tracker List Item Details:</h1>
-<h6>@Model.ItemName</h6>
-<h6>@Model.ItemPrice</h6>
-<h6>@Model.Purchased</h6>
-<h6>@Model.Packed</h6>
+<p>Item: @Model.ItemName</p>
+<p>Price: $@Model.ItemPrice</p>
+<p>Purchased?: @Model.Purchased</p>
+<p>Packed?: @Model.Packed</p>
 <a href='/packers/new'> Add another item</a>
 <a href='/packers'> View all the packers </a>
