@@ -12,9 +12,15 @@
       <label for="itemPrice">Add it's price</label>
       <input id="itemPrice" name="itemPrice" type="number"><br>
       <label for="purchased">Did you purchased yet ?</label>
-      <input id="purchased" name="purchased" type="bool"><br>
+      <select class="form-control" name="purchased">
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+      </select><br>
       <label for="packed"> Did you packed yet ?</label>
-      <input id="packed" name="packed" type="bool"><br>
+      <select class="form-control" name="packed">
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+      </select><br>
       <button type="submit">Submit</button>
     </form>
     <a href='/packers'><button>Cancel</button></a>

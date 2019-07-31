@@ -3,7 +3,22 @@
 <h1> Packer Tracker List Item Details:</h1>
 <p>Item: @Model.ItemName</p>
 <p>Price: $@Model.ItemPrice</p>
-<p>Purchased?: @Model.Purchased</p>
-<p>Packed?: @Model.Packed</p>
+@if (@Model.Purchased)
+{
+    <p>Purchased?: Yes</p>
+}
+else
+{
+    <p>Purchased?: No</p>
+}
+
+@if (@Model.Packed)
+{
+    <p>Packed?: Yes</p>
+}
+else
+{
+    <p>Packed?: No</p>
+}
 <a href='/packers/new'> Add another item</a>
 <a href='/packers'> View all the packers </a>
